@@ -1,0 +1,32 @@
+# This problem was recently asked by Google. Given a list of numbers and a number k, return whether any two numbers from the list add up to k.
+## For example, given [10, 15, 3, 7] and k of 17, return true since 10 + 7 is 17.
+
+
+
+import java.lang.*;
+
+public class Prog1 {
+    public static void main(String[] args) {
+        //Given  x = [3, 7, 10, 13], k = 17, return true if any 2 sum(array[i], array[j]) == k
+
+        int[] x = {10, 0, 10, 17};
+        int k = 17;
+
+        if (check(x, k)) {
+            System.out.println("Worked");
+        } else {
+            System.out.println("Not worked");
+        }
+    }
+
+    public static boolean check(int[] ar, int k) {
+        for (int i = 0; i < ar.length; i++) {
+            for (int j = i + 1; j < ar.length; j++) {
+                if ((ar[i] + ar[j]) == k) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+}
