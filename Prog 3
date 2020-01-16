@@ -1,0 +1,38 @@
+Source : Techgig Januaury Code Challenge
+
+def main():
+    # Write code here 
+    # input : no of testcases,
+    # number of people, p value,
+    # number of people's alphabet and value
+
+    tc = int(input())
+    n=0
+    p=0
+    a=[]
+    s=0
+    c=0
+
+    for i in range(tc):
+        inp=input()
+        n=int(inp[0])
+        p=int(inp[2])
+        st = input()
+        c=0
+        s=0
+        a=[]
+
+        for j in range(n):
+            a.append(ord(st[j])-96)
+
+        for j in range(n):
+            s=0
+            for k in range(j,n,1):               
+                s+=a[k]
+                if s==p:
+                    c+=1
+
+
+        print(c)
+
+main()
