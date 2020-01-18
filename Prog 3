@@ -1,4 +1,41 @@
 Source : Techgig Januaury Code Challenge
+Qns : The New Year Party is on and people are coming up with new and innovative ideas for party and games. Mr. Alphabet has organised such a theme party. He has invited N people for the party and all have come wearing a t-shirt with a single lowercase alphabet printed on it. The alphabet may be their starting name or their favorite of all 26. The alphabet on the t-shirt provides individuals with their party number. 
+Example:
+Suppose if the t-shirt has ‘a’ printed on it, then the party number of the person wearing that is equal to 1 and so on with the alphabet ‘z’ having the party number 26.
+Mr. Alphabet has organised a game for the guests. In this game, N people will arrange themselves in a linear manner randomly. Mr. Alphabet will provide a party number P and people have to tell the count of all those, the sum of whose will be equal to P. The limitation is that only the continuous ones can be together in forming the party number P.
+Example:
+Suppose there are 3 people, N =3.
+The alphabets on their t-shirt are ‘a’, ‘b’, and ‘c’ respectively. The limitation is that only continuous ones can be together.
+Mr. Alphabet will provide gifts for the correct answers. No one wants to lose out on the gifts but they are finding it difficult to answer. Can you help them and provide correct answers to Mr. Alphabet?
+Input Format
+The first line of input consists of the number of test cases, T
+The first line of each test case consists of the number of people, N and the Party number, P
+The second line of each test case consists of the alphabets of the N people arranged in a line.
+Constraints :
+1<= T<= 10
+1<= N <=1000000
+1<= P <=26000000
+Output Format :
+Print the required output in a separate line. If no answer exists, print 0.
+
+Sample TestCase 1
+Input
+2
+5 4
+abdca
+3 1
+bcd
+Output
+2
+0
+Explanation
+Test Case 1:
+Number of people, N = 5
+Party Number = 4
+There are two possible ways to make up the Party Number, 4.
+d = 4 
+ca = 3 + 1 = 4 
+
 
 def main():
     # Write code here 
@@ -15,24 +52,28 @@ def main():
 
     for i in range(tc):
         inp=input()
-        n=int(inp[0])
-        p=int(inp[2])
+        n,p=inp.split(" ")
+        n=int(n)
+        p=int(p)
         st = input()
         c=0
-        s=0
+        s=p
+        tempa=[]
         a=[]
 
         for j in range(n):
-            a.append(ord(st[j])-96)
+            tempa.append(ord(st[j])-96)
+        a = tempa
 
-        for j in range(n):
-            s=0
-            for k in range(j,n,1):               
-                s+=a[k]
-                if s==p:
+        for k in range(n):
+            s=p
+            for j in range(k,n):
+                s-=a[j]
+                if s<0:
+                    break
+                if s==0:
                     c+=1
-
-
+                    break
         print(c)
 
 main()
